@@ -30,7 +30,7 @@ export default function Register() {
         onSubmit: login
     })
     return <>
-        <form onSubmit={formik.handleSubmit} className="max-w-md mx-auto mt-10">
+        <form onSubmit={formik.handleSubmit} className="w-3/4   max-w-md mx-auto mt-10">
             {apiError ? <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-red-500 dark:text-white" role="alert">
                 {apiError}
             </div> : null}

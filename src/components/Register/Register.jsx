@@ -49,7 +49,7 @@ export default function Register() {
 
     return <>
 
-        <form onSubmit={formik.handleSubmit} className="max-w-md mx-auto mt-10">
+        <form onSubmit={formik.handleSubmit} className="w-3/4 max-w-md mx-auto mt-10">
             <h1 className="font-bold text-3xl  text-green-700">Signup</h1>
             <hr className='mt-2 bg-gray-700 h-0.5' />
             <div className="relative z-0 w-full mb-5  mt-5 group">

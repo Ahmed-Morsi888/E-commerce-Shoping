@@ -61,7 +61,7 @@ export default function ProductDetails() {
     return <>
         {loading ? <div className=" w-full h-full  flex justify-center items-center"><i className="mt-20 fa-solid fa-spinner fa-spin text-green-500 text-6xl"> </i > </div >
             : <>
-                <div className='flex flex-col lg:flex-row lg:flex-wrap justify-center lg:p-10 items-center mx-auto'  >
+                <div className='flex flex-col md:flex-row md:flex-wrap justify-center md:p-10 items-center mx-auto'  >
 
                     <div className='w-3/4 lg:w-1/4 shadow-lg '>
                         <Slider {...settings}>
