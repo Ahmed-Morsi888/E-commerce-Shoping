@@ -50,7 +50,7 @@ export default function Cart() {
         {loading ? <div className=" w-full h-full  flex justify-center items-center"><i className="mt-20 fa-solid fa-spinner fa-spin text-green-500 text-6xl"> </i> </div>
             : <>
                 {numOfCart > 0 ? <><h2 className='w-full text-center py-4 text-xl font-semibold' >Total Cart Price <span className='font-bold text-green-800'> ${productCart?.totalCartPrice}</span> </h2>
-                    <div className="w-3/4 md:w-full lg:w-3/4 mx-auto relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <div className=" w-[98%] md:w-full lg:w-3/4 mx-auto relative overflow-x-auto shadow-md sm:rounded-lg">
                         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
@@ -73,14 +73,14 @@ export default function Cart() {
                             </thead>
                             <tbody>
                                 {productCart?.products.map((product) => <> <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                    <td className="p-4">
-                                        <img src={product?.product?.imageCover} className="h-[174.5px] w-16 md:w-32 max-w-full max-h-full" alt={product?.product?.title} />
+                                    <td className="p-4 text-center">
+                                        <img src={product?.product?.imageCover} className="h-[100px] md:h-[174.5px] w-16 md:w-32 max-w-full max-h-full" alt={product?.product?.title} />
 
                                     </td>
-                                    <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                                        {product?.product?.title.split(" ").splice(0, 6).join(" ")}
+                                    <td className="px-6 py-4 font-medium md:font-semibold text-gray-900 dark:text-white text-center">
+                                        {product?.product?.title.split(" ").splice(0, 4).join(" ")}
                                     </td>
-                                    <td className="px-6 py-4">
+                                    <td className="px-6 py-4   font-medium md:font-semibold text-center">
                                         <div className="flex items-center">
                                             <button onClick={() => updateProduct(product?.product.id, product?.count - 1)} className="inline-flex items-center justify-center p-1 me-3 text-sm font-medium h-6 w-6 text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
                                                 <span className="sr-only">Quantity button</span>
@@ -99,11 +99,11 @@ export default function Cart() {
                                             </button>
                                         </div>
                                     </td>
-                                    <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                                    <td className="px-2 py-4  font-medium md:font-semibold text-gray-900 dark:text-white text-center">
                                         {`${product?.price} $`}
                                     </td>
                                     <td className="px-6 py-4">
-                                        <span onClick={() => removeProduct(product?.product.id)} className="font-medium text-red-600 dark:text-red-500 hover:underline cursor-pointer" >{isLoading && currentId === product.product.id ? <i className="fa-solid fa-spinner fa-spin"></i> : "Remove"}</span>
+                                        <span onClick={() => removeProduct(product?.product.id)} className=" font-medium md:font-semibold text-red-600 dark:text-red-500 hover:underline cursor-pointer" >{isLoading && currentId === product.product.id ? <i className="fa-solid fa-spinner fa-spin"></i> : "Remove"}</span>
                                     </td>
                                 </tr>
                                 </>)}
@@ -114,8 +114,8 @@ export default function Cart() {
 
                     </div>
                     <div className='w-full text-center mt-2 flex justify-around'>
-                        <button onClick={clearAllCart} className='w-1/4 text-xl font-semibold  px-6 py-5 bg-red-500 rounded-lg'>Clear Cart <i className="fa-solid fa-trash-can" ></i> </button>
-                        <Link className='w-1/4  text-xl font-semibold  px-6 py-5 bg-green-500 rounded-lg' to={`/onlinepay`}> <button>Online Pay </button> </Link>
+                        <button onClick={clearAllCart} className='w-[120px] h-[60px]  md:w-[200px] text-lg md:text-xl font-semibold px-0   md:px-6 py-0  md:py-5 bg-red-500 rounded-lg'>Clear Cart <i className="fa-solid fa-trash-can" ></i> </button>
+                        <Link className='w-[150px] h-[60px]  md:w-[200px]  text-xl font-semibold  px-0 md:px-6 pt-4  md:py-5 bg-green-500 rounded-lg' to={`/onlinepay`}> <button className='w-full'>Online Pay </button> </Link>
                     </div></> : <p className="text-center pt-24 text-2xl font-semibold"> Your Cart is Empty....</p>}
             </>}
 
