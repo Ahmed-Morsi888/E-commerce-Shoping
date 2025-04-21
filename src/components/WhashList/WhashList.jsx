@@ -28,7 +28,7 @@ export default function WhashList() {
                 console.log(error)
             });
     }
-    async function removeProductFromWhashlist(productId) {
+    async function RemoveProductFromWhashlist(productId) {
         setCurrentId(productId)
         setIsLoading(true);
         await removeProductFromwhashlist(productId);
@@ -72,7 +72,7 @@ export default function WhashList() {
                             </tr>
                         </thead>
                         <tbody>
-                            {whashlistProduct?.map((product) => <> <tr className= " bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            {whashlistProduct?.map((product) => <> <tr className= " bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 ">
                                 <td className="p-4 ">
                                     <img src={product?.imageCover} className="h-[174.5px] w-16 md:w-32 max-w-full max-h-full" alt={product?.title} />
 
@@ -85,10 +85,10 @@ export default function WhashList() {
                                     {` ${product?.price} $`}
                                 </td>
                                 <td className="px-6 py-4">
-                                    <span onClick={() => removeProductFromWhashlist(product?.id)} className="font-medium text-red-600 dark:text-red-500 hover:underline cursor-pointer" >{isLoading && currentId === product?.id ? <i className="fa-solid fa-spinner fa-spin"></i> : "Remove"}</span>
+                                    <span onClick={() => RemoveProductFromWhashlist(product?.id)} className="font-medium text-red-600 dark:text-red-500 hover:underline cursor-pointer" >{isLoading && currentId === product?.id ? <i className="fa-solid fa-spinner fa-spin"></i> : "Remove"}</span>
                                 </td>
                                 <td className="px-6 py-4">
-                                    <span>{loadingAdd  && currentId === product?.id?<i className="fa-solid fa-spinner fa-spin"></i>   :<i onClick={() => addProduct(product?.id)} id={product?.id} className='fa-solid fa-bookmark cursor-pointer '></i>
+                                    <span>{loadingAdd  && currentId === product?.id?<i className="fa-solid fa-spinner fa-spin"></i>   :<span onClick={() => addProduct(product?.id)} id={product?.id} className='cursor-pointer  text-md font-medium text-green-500 hover:underline'>add to cart</span>
                             }</span>
                                 
                                 </td>
