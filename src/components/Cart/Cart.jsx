@@ -15,6 +15,7 @@ export default function Cart() {
     async function getLogedUserCart() {
         setLoading(true);
         let loged = await getLogedCart();
+        console.log(loged);
         setLoading(false)
         setProductCart(loged.data.data);
         setNumOfCart(loged.data?.numOfCartItems)

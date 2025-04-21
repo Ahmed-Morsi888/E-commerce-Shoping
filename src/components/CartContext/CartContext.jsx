@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { createContext } from 'react'
+import { createContext, useState } from 'react'
 import toast from 'react-hot-toast';
 export let CartContext = createContext();
 export default function CartContextProvider(props) {
 
-
+    const [cartId, setCartId] = useState(0)
     let headers = {
         token: localStorage.getItem("userToken")
     }
@@ -12,7 +12,10 @@ export default function CartContextProvider(props) {
     function getLogedCart() {
         return axios.get(`https://ecommerce.routemisr.com/api/v1/cart`,
             { headers })
-            .then((response) => response)
+            .then((response) => {
+                setCartId(response.data.cartId)
+                return response
+            })
             .catch((error) => console.log(error)
             )
     }
@@ -65,8 +68,8 @@ export default function CartContextProvider(props) {
             .catch((error) => console.log(error)
             )
     }
-    function onlinePay(url, idCart, formvalues) {
-        return axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${idCart}?url=${url}`,
+    function onlinePay(url, formvalues) {
+        return axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${url}`,
             { shippingAddress: formvalues }
             , { headers })
     }
