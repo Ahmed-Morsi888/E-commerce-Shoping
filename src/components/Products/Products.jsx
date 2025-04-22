@@ -62,23 +62,26 @@ export default function Products() {
        toast("product removed succesfully from wishlist", { position: "bottom-center", duration: 2000, className: "bg-red-500" })
         
     }
-    async function addOrremove(productId){
-        let arr2=[];
-        axios.get(`https://ecommerce.routemisr.com/api/v1/wishlist`, { headers })
-        .then((response) => {
-            response.data.data.map((data) => {
-                arr2.push(data.id);
-            })              
-        })
-        .catch((error) => {
-            console.log(error )
-        });
-       {arr2.includes(productId)? RemoveProductFromWhashlist(productId): AddProductTowhashlist(productId)}
-    }
+   
+    async function addOrremove(productId) {
+        try {
+          // احصل على المنتجات الموجودة حاليًا في المفضلة
+          const response = await axios.get(`https://ecommerce.routemisr.com/api/v1/wishlist`, { headers });
+          const wishlistIds = response.data.data.map((item) => item.id);
+      
+          if (wishlistIds.includes(productId)) {
+            await RemoveProductFromWhashlist(productId);
+          } else {
+            await AddProductTowhashlist(productId);
+          }
+        } catch (error) {
+          console.log("Error in add or remove product:", error);
+        }
+      }
 
     useEffect(() => { getWhashlist() }, [])
     return <>
-        {loading ? <div className=" w-full h-full  flex justify-center items-center"><i className=" mt-20 fa-solid fa-spinner fa-spin text-green-500 text-6xl"> </i> </div>
+        {loading ? <div className=" w-full h-full  flex justify-center items-center"><i className=" mt-20 fa-solid fa-spinner fa-spin whashListStyle text-6xl"> </i> </div>
             : <>
                 <div className=' flex flex-wrap justify-center  lg:justify-normal  py-4 '>
                     {allProduct?.map((product) => <div key={product?.id} className=' w-[80%] md:w-[24%] md:ms-2 mt-2 lg:mt-2 border-2 border-gray-200 relative lg:w-[16%] p-2 text-center'  >
