@@ -82,7 +82,7 @@ export default function ProductDetails() {
                     </div>
                 </div>
 
-                <div className='w-full mx-auto lg:mx-0 lg:w-3/4 m-auto' >
+                <div className='w-full mx-auto  lg:w-3/4 ' >
                     <h2 className='mt-4 lg:mt-0 text-center text-green-600  font-semibold text-lg lg:text-xl py-2'>Related Products</h2>
                     <Slider className=' flex flex-wrap ' {...setting}>
                         {relatedProduct?.map((src) => <div key={src?.id} className=' w-1/4 px-1 shadow-lg '>
